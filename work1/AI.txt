@@ -1,0 +1,86 @@
+Class loc(){
+    int x;
+    int y;
+}
+
+
+void canatt(loc lc,int[][] gezi){
+    Random rd = new Random();
+    int rdx = rd.Next(0,100);
+    int rdy = rd.Next(0,100);
+    if(gezi[rdx][rdy] == 0){
+        lc.x = rdx;
+        lc.y = rdy;
+    }
+    else
+        canatt(lc,gezi);
+}
+
+int max(int x,int y){
+    if(x > y)
+       return x;
+    else
+       return y;
+}
+
+int min(int x,int y){
+    if(x < y)
+       return x;
+    else
+       return y;
+}
+
+void aiturn(loc keych,int[][] gezi,int typecheck,loc[] shotd){
+    if(typecheck == -1)
+        canatt(keych,gezi);
+    else if(typecheck == 0){
+        Random rd = new Random();
+        int newrd = rd.Next(0,3);
+        if(newrd == 0 && gezi[shotd[0].x][shotd[0].y+1] == 0 && shotd[0].y+1 < 100)
+            {keych.x = shotd[0].x; keych.y = shoyd[0].y + 1;}
+        if(newrd == 1 && gezi[shotd[0].x+1][shotd[0].y] == 0 && shotd[0].x+1 < 100)
+            {keych.x = shotd[0].x + 1; keych.y = shoyd[0].y;}
+        if(newrd == 2 && gezi[shotd[0].x][shotd[0].y-1] == 0 && shotd[0].y-1 >= 0)
+            {keych.x = shotd[0].x; keych.y = shoyd[0].y - 1;}
+        if(newrd == 3 && gezi[shotd[0].x-1][shotd[0].y] == 0 && shotd[0].x-1 >= 0)
+            {keych.x = shotd[0].x - 1; keych.y = shoyd[0].y;}
+    }
+    else{
+         if(shotd[0].x == shotd[typrcheck].x){
+             Random rd = new Random();
+             int newrd = rd.Next(0,2);
+             if(newrd == 0){
+                 int count = max(shotd[0].y,shotd[typecheck].y)
+                 if(count + 1 < 100 && gezi[x = shotd[0]][count + 1] == 0)
+                    {x = shotd[0].x; y = count + 1;}
+                 else
+                    newrd = 1;
+             }
+             if(newrd == 1){
+                 int count = min(shotd[0].y,shotd[typecheck].y)
+                 if(count - 1 >= 0 && gezi[x = shotd[0]][count - 1] == 0)
+                    {x = shotd[0].x; y = count - 1;}
+                 else
+                     newrd = 0;
+             }               
+         }
+         else{
+             Random rd = new Random();
+             int newrd = rd.Next(0,2);
+             if(newrd == 0){
+                 int count = max(shotd[0].x,shotd[typecheck].x)
+                 if(count + 1 < 100 && gezi[count + 1][shotd[0].y] == 0)
+                    {x = count + 1; y = shotd[0].y;}
+                 else
+                    newrd == 1;
+             }
+             if(newrd == 1){
+                 int count = min(shotd[0].x,shotd[typecheck].x)
+                 if(count - 1 >= 0 && gezi[count - 1][shotd[0].y] == 0)
+                    {x = count - 1; y = shotd[0].y;}
+                 else
+                     newrd = 1;
+             }
+         }
+    }   
+}

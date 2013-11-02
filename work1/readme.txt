@@ -1,0 +1,1 @@
+通过调用manipulation来实现object的拖动。在这个游戏中，开始的部署战舰的过程中，需要比较的精确的拖动，所以在拖动事件中判断e.IsInertial调用e.complete（）来中止原有的惯性效果。当拖动的位置不当时，将this.translateTransform.X = 0; this.translateTransform.Y = 0; 来使图片还原至原位置。
